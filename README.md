@@ -1,3 +1,4 @@
+# See actions for build for arm64
 <img src=".github/mLogo.png" width="150" height="150" align="left"></img>
 
 <h1>PreMiD <code>--linux</code></h1>
