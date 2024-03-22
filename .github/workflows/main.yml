@@ -1,0 +1,30 @@
+name: Deployer
+on:
+  repository_dispatch:
+  push:
+    branches:
+      - master
+jobs:
+  stable:
+    name: Stable Build
+    runs-on: ubuntu-latest
+    if: "github.event_name == 'push' && contains(github.event.head_commit.message, '[REL]')"
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+      - name: Gather Information
+        id: info
+        run: |
+          echo "::set-output name=productName::$(node -p -e "require('./package.json').productName")"
+          echo "::set-output name=version::$(node -p -e "require('./package.json').version")"
+      - name: 📌 | Install Dependencies
+        run: |
+          yarn install
+          yarn run dist
+      - name: 📦 | Building
+        run: yarn run build
+      - name: 📦 | Upload Debian packages
+        uses: actions/upload-artifact@v2
+        with:
+          name: PreMiD.deb
+          path: ./dist/app/dist/${{ steps.info.outputs.productName }}.deb
