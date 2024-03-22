@@ -11,7 +11,7 @@
 	"bugs": {
 		"url": "https://github.com/PreMiD/Linux/issues"
 	},
-	"homepage": "https://premid.app",
+	"homepage": "https://premid.app/",
 	"license": "MPL-2.0",
 	"scripts": {
 		"init": "tsc && devScript --copyOnly",
