@@ -18,9 +18,9 @@
 		"start": "electron dist/app/. --unhandled-rejections=strict",
 		"dev": "devScript",
 		"dist": "tsc && devScript --copyOnly && cd dist/app/ && yarn install",
-		"build": "electron-builder --project ./dist/app/ -p never",
-		"build:appimage": "electron-builder --project ./dist/app/ build -l AppImage --x64 -p onTagOrDraft",
-		"build:n-appimage": "electron-builder --project ./dist/app/ build -l AppImage --x64 -p never"
+		"build": "electron-builder --project ./dist/app/ -p never --arm64",
+		"build:appimage": "electron-builder --project ./dist/app/ build -l AppImage --arm64 -p onTagOrDraft",
+		"build:n-appimage": "electron-builder --project ./dist/app/ build -l AppImage --arm64 -p never"
 	},
 	"build": {
 		"appId": "com.PreMiD.app",
